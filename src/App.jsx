@@ -1,5 +1,5 @@
-import { useState, useMemo, useCallback } from "react";
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart, ReferenceLine } from "recharts";
+import { useState, useMemo, useCallback, Fragment } from "react";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts";
 
 /* ═══════════════════════════════════════════════════════════════════════
    VANCOUVER BUY vs RENT WEALTH SIMULATOR — Full Public Release
@@ -910,10 +910,10 @@ export default function VancouverHousingSim() {
                     <tr style={{ borderBottom: "1px solid #334155" }}>
                       <th />
                       {SCEN.map(s => (
-                        <React.Fragment key={s.id}>
+                        <Fragment key={s.id}>
                           <th style={{ textAlign: "right", padding: "2px 6px", color: "#475569", borderLeft: "1px solid #1e293b", fontSize: 9 }}>NW</th>
                           <th style={{ textAlign: "right", padding: "2px 6px", color: "#475569", fontSize: 9 }}>∑Unrec</th>
-                        </React.Fragment>
+                        </Fragment>
                       ))}
                     </tr>
                   </thead>
@@ -929,10 +929,10 @@ export default function VancouverHousingSim() {
                             const nw = vals[si];
                             const isTop = nw === best && best > 0;
                             return (
-                              <React.Fragment key={s.id}>
+                              <Fragment key={s.id}>
                                 <td style={{ textAlign: "right", padding: "3px 6px", borderLeft: "1px solid #1e293b", fontWeight: isTop ? 700 : 400, color: isTop ? s.color : "#94a3b8", background: isTop ? s.color + "12" : "transparent" }}>{cadM(nw)}</td>
                                 <td style={{ textAlign: "right", padding: "3px 6px", color: "#475569" }}>{cadM(sn?.cumU || 0)}</td>
-                              </React.Fragment>
+                              </Fragment>
                             );
                           })}
                         </tr>
